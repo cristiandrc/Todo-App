@@ -5,9 +5,10 @@ import { TodoList } from "./components/TodoList";
 import { CreateTodoButton } from "./components/CreateTodoButton";
 
 const todo = [
-  { text: "nada1", estado: false },
-  { text: "nada2", estado: false },
-  { text: "nada3", estado: false },
+  { text: "nada1", completed: false },
+  { text: "nada2", completed: false },
+  { text: "nada3", completed: false },
+  { text: "nada4", completed: true },
 ];
 
 function App() {
