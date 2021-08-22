@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
 }
 
 .todoItem-p {

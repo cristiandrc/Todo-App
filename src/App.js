@@ -8,6 +8,9 @@ import { CreateTodoButton } from "./components/CreateTodoButton";
 import { TodoContext } from "./Context/TodoContext";
 import { Modal } from "./components/Modal";
 import { TodoForm } from "./components/TodoForm";
+import { TodosError } from "./components/TodosError";
+import { TodosLoading } from "./components/TodosLoading";
+import { EmptyTodos } from "./components/EmptyTodos";
 
 function App() {
   const {
@@ -24,9 +27,10 @@ function App() {
       <TodoCounter />
       <TodoSearch />
       <TodoList>
-        {error && <p>error </p>}
-        {loading && <p>Estamos cargando</p>}
-        {!loading && !filterTodos.length && <p>Crea tu primer todo</p>}
+        {error && <TodosError />}
+        {loading &&
+          new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
+        {!loading && !filterTodos.length && <EmptyTodos />}
 
         {filterTodos.map((item, i) => (
           <TodoItem
