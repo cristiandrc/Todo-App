@@ -1,9 +1,22 @@
 import React from "react";
 import "../styles/TodoSearch.css";
 
-const TodoSearch = () => {
+const TodoSearch = ({ searchValue, setSearchValue }) => {
+  const onSearchValueChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
-    <input className="todo-search" type="text" placeholder="Filtra el todo" />
+    <>
+      <input
+        onChange={onSearchValueChange}
+        className="todo-search"
+        type="text"
+        value={searchValue}
+        placeholder="Filtra el todo"
+      />
+      <p>{searchValue}</p>
+    </>
   );
 };
 
