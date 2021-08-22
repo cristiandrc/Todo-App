@@ -5,12 +5,20 @@ import { TodoSearch } from "./components/TodoSearch";
 import { TodoItem } from "./components/TodoItem";
 import { TodoList } from "./components/TodoList";
 import { CreateTodoButton } from "./components/CreateTodoButton";
-
 import { TodoContext } from "./Context/TodoContext";
+import { Modal } from "./components/Modal";
+import { TodoForm } from "./components/TodoForm";
 
 function App() {
-  const { loading, error, completeTodo, filterTodos, deleteTodos } =
-    useContext(TodoContext);
+  const {
+    loading,
+    error,
+    completeTodo,
+    filterTodos,
+    deleteTodos,
+    openModal,
+    setOpenModal,
+  } = useContext(TodoContext);
   return (
     <>
       <TodoCounter />
@@ -29,8 +37,12 @@ function App() {
           />
         ))}
       </TodoList>
-
-      <CreateTodoButton />
+      {!!openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
+      <CreateTodoButton setOpenModal={setOpenModal} />
     </>
   );
 }
