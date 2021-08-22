@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
@@ -6,44 +6,20 @@ import { TodoItem } from "./components/TodoItem";
 import { TodoList } from "./components/TodoList";
 import { CreateTodoButton } from "./components/CreateTodoButton";
 
-const defaultTodo = [
-  { text: "nada1", completed: false },
-  { text: "nada2", completed: false },
-  { text: "nada3", completed: false },
-  { text: "nada4", completed: true },
-];
+import { TodoContext } from "./Context/TodoContext";
 
 function App() {
-  const [todos, setTodos] = useState(defaultTodo);
-  const [searchValue, setSearchValue] = useState("");
-
-  const completedTodos = todos.filter((todo) => !!todo.completed).length;
-  const totalTodos = todos.length;
-
-  const filterTodos = todos.filter((todo) => {
-    return todo.text.toLowerCase().includes(searchValue.toLowerCase());
-  });
-
-  const completeTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-
-    setTodos(newTodos);
-  };
-
-  const deleteTodos = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
-  };
-
+  const { loading, error, completeTodo, filterTodos, deleteTodos } =
+    useContext(TodoContext);
   return (
     <>
-      <TodoCounter total={totalTodos} completed={completedTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoCounter />
+      <TodoSearch />
       <TodoList>
+        {error && <p>error </p>}
+        {loading && <p>Estamos cargando</p>}
+        {!loading && !filterTodos.length && <p>Crea tu primer todo</p>}
+
         {filterTodos.map((item, i) => (
           <TodoItem
             key={i}
