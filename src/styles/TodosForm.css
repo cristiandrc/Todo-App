@@ -1,0 +1,39 @@
+.TodoForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aliceblue;
+  width: 340px;
+  height: 250px;
+}
+
+label {
+  color: black;
+  font-weight: 700;
+  margin: 20px 0;
+  font-size: 25px;
+}
+
+textarea {
+  max-width: 280px;
+  min-width: 280px;
+  min-height: 100px;
+  padding: 5px;
+  text-align: center;
+  border: solid 1px rgb(96, 163, 218);
+  outline: none;
+  border-radius: 5px;
+}
+
+.TodoForm_Button {
+  width: 90px;
+  height: 30px;
+  border: none;
+  margin: 10px;
+  border-radius: 5px;
+  background: none;
+}
+
+.TodoForm_Button--add {
+  background-color: rgb(96, 163, 218);
+}

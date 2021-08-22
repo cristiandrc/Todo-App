@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
 import { TodoContext } from "../Context/TodoContext";
+import "../styles/TodosForm.css";
+
 const TodoForm = () => {
   const [newTodoValue, setNewTodoValue] = useState("");
   const { addTodo, setOpenModal } = useContext(TodoContext);
+  const [placeholder, setPlaceholder] = useState("Comprar el mercado");
 
   const onChange = (e) => {
     setNewTodoValue(e.target.value);
@@ -14,22 +17,32 @@ const TodoForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addTodo(newTodoValue);
-    onCancel();
+    if (newTodoValue) {
+      addTodo(newTodoValue);
+      onCancel();
+    } else {
+      setPlaceholder("Porfa ingresa una tarea para poder Añadir :)");
+    }
   };
   return (
-    <form onSubmit={onSubmit}>
-      <label htmlFor="">...</label>
+    <form className="TodoForm" onSubmit={onSubmit}>
+      <label htmlFor="">Escribe tu nuevo TODO</label>
       <textarea
         onChange={onChange}
         value={newTodoValue}
-        placeholder="comprar el mercado"
+        placeholder={placeholder}
       />
       <div>
-        <button type="button" onClick={onCancel}>
+        <button
+          className="TodoForm_Button TodoForm_Button--cancel"
+          type="button"
+          onClick={onCancel}
+        >
           Cancelar
         </button>
-        <button type="submit">Añadir</button>
+        <button className="TodoForm_Button TodoForm_Button--add" type="submit">
+          Añadir
+        </button>
       </div>
     </form>
   );
