@@ -17,7 +17,6 @@ const TodoSearch = () => {
         value={searchValue}
         placeholder="Filtra el todo"
       />
-      <p>{searchValue}</p>
     </>
   );
 };

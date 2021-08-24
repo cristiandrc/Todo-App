@@ -11,6 +11,7 @@ import { TodoForm } from "./components/TodoForm";
 import { TodosError } from "./components/TodosError";
 import { TodosLoading } from "./components/TodosLoading";
 import { EmptyTodos } from "./components/EmptyTodos";
+import { Menu } from "./components/Menu";
 
 function App() {
   const {
@@ -21,16 +22,18 @@ function App() {
     deleteTodos,
     openModal,
     setOpenModal,
+    todos,
   } = useContext(TodoContext);
   return (
     <>
       <TodoCounter />
+      <Menu />
       <TodoSearch />
       <TodoList>
         {error && <TodosError />}
         {loading &&
           new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
-        {!loading && !filterTodos.length && <EmptyTodos />}
+        {!loading && !todos.length && <EmptyTodos />}
 
         {filterTodos.map((item, i) => (
           <TodoItem

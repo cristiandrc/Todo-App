@@ -1,5 +1,6 @@
 .todoItem-container {
   width: 100%;
+  max-width: 375px;
   min-height: 60px;
   background-color: rgb(170, 170, 170);
   margin: 25px 0;

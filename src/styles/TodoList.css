@@ -1,0 +1,14 @@
+.Todo-list_container {
+  width: 100%;
+  max-width: 375px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  width: 100%;
+  max-width: 375px;
+  display: inline-block;
+}
