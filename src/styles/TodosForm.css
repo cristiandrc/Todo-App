@@ -5,6 +5,7 @@
   background-color: aliceblue;
   width: 340px;
   height: 250px;
+  border-radius: 5px;
 }
 
 label {
@@ -32,8 +33,17 @@ textarea {
   margin: 10px;
   border-radius: 5px;
   background: none;
+  cursor: pointer;
+  transition: 500ms ease box-shadow;
 }
 
+.TodoForm_Button:hover {
+  box-shadow: 1px 1px 20px 6px rgb(200 200 200 / 78%);
+}
 .TodoForm_Button--add {
   background-color: rgb(96, 163, 218);
+}
+
+.TodoForm_Button--cancel {
+  background-color: rgb(199, 132, 132);
 }

@@ -4,7 +4,7 @@ import "../styles/TodoList.css";
 const TodoList = ({ children }) => {
   return (
     <section className="Todo-list_container">
-      <ul>{children}</ul>
+      <ul className="Todo-list_ul">{children}</ul>
     </section>
   );
 };
