@@ -2,41 +2,45 @@ import React, { useState } from "react";
 import { useLocalStorage } from "../Hooks/useLocalStorage";
 
 const TodoContext = React.createContext();
-
 const TodoProvider = (props) => {
   const [todos, saveTodos, loading, error] = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [filterTodos, setFilterTodos] = useState([]);
-  const [stateFilter, setStateFilter] = useState("");
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
 
-  const getFilter = (id = stateFilter) => {
-    let filter;
+  const getFilter = (id) => {
     if (id === "All") {
-      filter = todos.filter((todo) => {
+      return todos.filter((todo) => {
         return todo.text.toLowerCase().includes(searchValue.toLowerCase());
       });
-      setStateFilter("All");
     } else if (id === "Active") {
-      filter = todos.filter((todo) => todo.completed === false);
-      setStateFilter("Active");
+      const newFilter = todos.filter((todo) => todo.completed === false);
+      return newFilter.filter((filter) =>
+        filter.text.toLowerCase().includes(searchValue.toLowerCase())
+      );
     } else if (id === "Completed") {
-      filter = todos.filter((todo) => todo.completed === true);
-      setStateFilter("Completed");
+      const newFilter = todos.filter((todo) => todo.completed === true);
+      return newFilter.filter((filter) =>
+        filter.text.toLowerCase().includes(searchValue.toLowerCase())
+      );
     } else {
       return null;
     }
-    setFilterTodos(filter);
   };
+
+  //Filtros
+  const filterTodos = getFilter("All");
+  const filterActive = getFilter("Active");
+  const filterCompleted = getFilter("Completed");
+
+  //-------------------
 
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
     saveTodos(newTodos);
-    getFilter();
   };
 
   const deleteTodos = (text) => {
@@ -44,7 +48,6 @@ const TodoProvider = (props) => {
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
-    getFilter();
   };
 
   const addTodo = (text) => {
@@ -56,7 +59,6 @@ const TodoProvider = (props) => {
     });
 
     saveTodos(newTodo);
-    getFilter();
   };
 
   return (
@@ -68,7 +70,6 @@ const TodoProvider = (props) => {
         completeTodo,
         searchValue,
         setSearchValue,
-        filterTodos,
         deleteTodos,
         completedTodos,
         openModal,
@@ -76,6 +77,9 @@ const TodoProvider = (props) => {
         addTodo,
         todos,
         getFilter,
+        filterTodos,
+        filterActive,
+        filterCompleted,
       }}
     >
       {props.children}

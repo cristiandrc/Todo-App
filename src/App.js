@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
@@ -18,16 +18,21 @@ function App() {
     loading,
     error,
     completeTodo,
-    filterTodos,
     deleteTodos,
     openModal,
     setOpenModal,
     todos,
+    filterTodos,
+    filterActive,
+    filterCompleted,
   } = useContext(TodoContext);
+
+  const [stateFilter, setStateFilter] = useState("Active");
+
   return (
     <>
       <TodoCounter />
-      <Menu />
+      <Menu getFilter={setStateFilter} />
       <TodoSearch />
       <TodoList>
         {error && <TodosError />}
@@ -35,14 +40,32 @@ function App() {
           new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
         {!loading && !todos.length && <EmptyTodos />}
 
-        {filterTodos.map((item, i) => (
-          <TodoItem
-            key={i}
-            {...item}
-            onComplete={() => completeTodo(item.text)}
-            onDelete={deleteTodos}
-          />
-        ))}
+        {stateFilter === "Active"
+          ? filterActive.map((item, i) => (
+              <TodoItem
+                key={i}
+                {...item}
+                onComplete={() => completeTodo(item.text)}
+                onDelete={() => deleteTodos(item.text)}
+              />
+            ))
+          : stateFilter === "All"
+          ? filterTodos.map((item, i) => (
+              <TodoItem
+                key={i}
+                {...item}
+                onComplete={() => completeTodo(item.text)}
+                onDelete={() => deleteTodos(item.text)}
+              />
+            ))
+          : filterCompleted.map((item, i) => (
+              <TodoItem
+                key={i}
+                {...item}
+                onComplete={() => completeTodo(item.text)}
+                onDelete={() => deleteTodos(item.text)}
+              />
+            ))}
       </TodoList>
       {!!openModal && (
         <Modal>

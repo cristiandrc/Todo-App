@@ -1,11 +1,10 @@
 import React, { useRef, useContext, useEffect } from "react";
-import { TodoContext } from "../Context/TodoContext";
+// import { TodoContext } from "../Context/TodoContext";
 import "../styles/Menu.css";
-const Menu = () => {
+const Menu = ({ getFilter }) => {
   const All = useRef();
   const Active = useRef();
   const Completed = useRef();
-  const { getFilter } = useContext(TodoContext);
 
   useEffect(() => {
     setTimeout(() => {

@@ -15,7 +15,7 @@ const TodoItem = ({ text, completed, onComplete, onDelete }) => {
       <p className={`todoItem-p ${completed && "todoItem-p__completed"} `}>
         {text}
       </p>{" "}
-      <span className=" icon todoItem-delete" onClick={() => onDelete(text)}>
+      <span className=" icon todoItem-delete" onClick={onDelete}>
         X
       </span>{" "}
     </li>
