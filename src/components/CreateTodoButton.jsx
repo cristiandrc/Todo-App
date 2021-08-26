@@ -5,7 +5,7 @@ import "../styles/CreateTodoButton.css";
 const CreateTodoButton = () => {
   const { openModal, setOpenModal } = useContext(TodoContext);
   const handleClick = () => {
-    setOpenModal(!openModal);
+    setOpenModal((estado) => !estado);
   };
 
   return (
