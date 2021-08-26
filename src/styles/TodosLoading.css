@@ -32,14 +32,11 @@
 
 .LoadingTodo-completeIcon {
   left: 0;
-  transform: rotate(180deg) translate(0, 5px);
 }
 
 .LoadingTodo-deleteIcon {
   position: absolute;
   right: 0;
-  top: 0;
-  transform: translate(0, -50%);
 }
 
 .LoadingTodo-container {
