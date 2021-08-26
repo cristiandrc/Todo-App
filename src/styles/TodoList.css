@@ -1,7 +1,6 @@
 .Todo-list_container {
   width: 100%;
   max-width: 375px;
-  /* height: 400px; */
   display: flex;
   margin: 8px auto 0;
   align-items: center;

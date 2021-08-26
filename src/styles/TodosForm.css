@@ -6,6 +6,8 @@
   width: 340px;
   height: 250px;
   border-radius: 5px;
+  position: relative;
+  animation: open 0.5s ease backwards;
 }
 
 label {
@@ -46,4 +48,13 @@ textarea {
 
 .TodoForm_Button--cancel {
   background-color: rgb(199, 132, 132);
+}
+
+@keyframes open {
+  to {
+    right: 0;
+  }
+  from {
+    right: -100%;
+  }
 }

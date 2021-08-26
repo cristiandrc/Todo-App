@@ -12,7 +12,7 @@ const TodoForm = () => {
   };
 
   const onCancel = () => {
-    setOpenModal((e) => !e);
+    setOpenModal((state) => !state);
   };
 
   const onSubmit = (e) => {

@@ -38,7 +38,7 @@
 
 .todoItem-check {
   left: 0;
-  transform: rotate(180deg) translate(0, 5px);
+  /* transform: rotate(180deg) translate(0, 5px); */
 }
 
 .todoItem-check__completed {
@@ -47,8 +47,8 @@
 
 .todoItem-delete {
   right: 0;
-  top: 0;
-  transform: translate(0, -50%);
+  /* top: 0; */
+  /* transform: translate(0, -50%); */
 }
 
 .todoItem-delete:hover {
