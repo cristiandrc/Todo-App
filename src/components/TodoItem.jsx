@@ -12,13 +12,13 @@ const TodoItem = ({ text, completed, onComplete, onDelete }) => {
         onClick={onComplete}
       >
         <MdCheck />
-      </span>{" "}
+      </span>
       <p className={`todoItem-p ${completed && "todoItem-p__completed"} `}>
         {text}
-      </p>{" "}
+      </p>
       <span className=" icon todoItem-delete" onClick={onDelete}>
         <MdDelete />
-      </span>{" "}
+      </span>
     </li>
   );
 };

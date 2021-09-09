@@ -18,6 +18,8 @@
   line-height: 24px;
   font-weight: 400;
   color: black;
+  word-break: break-all;
+  padding: 4px 50px;
 }
 
 .todoItem-p__completed {
