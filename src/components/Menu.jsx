@@ -1,5 +1,4 @@
-import React, { useRef, useContext, useEffect } from "react";
-// import { TodoContext } from "../Context/TodoContext";
+import React, { useRef, useEffect } from "react";
 import "../styles/Menu.css";
 const Menu = ({ getFilter }) => {
   const All = useRef();
@@ -24,13 +23,13 @@ const Menu = ({ getFilter }) => {
     <nav className="menu-nav">
       <ul className="menu-ul">
         <li ref={All} filter="All" onClick={handleClick}>
-          All
+          Todos
         </li>
         <li ref={Active} filter="Active" onClick={handleClick}>
-          Active
+          Activos
         </li>
         <li ref={Completed} filter="Completed" onClick={handleClick}>
-          Completed
+          Completos
         </li>
       </ul>
     </nav>
