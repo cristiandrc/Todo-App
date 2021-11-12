@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoSearch } from "./components/TodoSearch";
-import { TodoItem } from "./components/TodoItem";
-import { TodoList } from "./components/TodoList";
-import { CreateTodoButton } from "./components/CreateTodoButton";
-import { TodoContext } from "./Context/TodoContext";
-import { Modal } from "./components/Modal";
-import { TodoForm } from "./components/TodoForm";
-import { TodosError } from "./components/TodosError";
-import { TodosLoading } from "./components/TodosLoading";
-import { EmptyTodos } from "./components/EmptyTodos";
-import { Menu } from "./components/Menu";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoItem } from "../components/TodoItem";
+import { TodoList } from "../components/TodoList";
+import { CreateTodoButton } from "../components/CreateTodoButton";
+import { TodoContext } from "../Context/TodoContext";
+import { Modal } from "../components/Modal";
+import { TodoForm } from "../components/TodoForm";
+import { TodosError } from "../components/TodosError";
+import { TodosLoading } from "../components/TodosLoading";
+import { EmptyTodos } from "../components/EmptyTodos";
+import { Menu } from "../components/Menu";
 
-function App() {
+const Home = () => {
   const {
     loading,
     error,
@@ -28,7 +28,6 @@ function App() {
   } = useContext(TodoContext);
 
   const [stateFilter, setStateFilter] = useState("Active");
-
   return (
     <>
       <TodoCounter />
@@ -75,6 +74,6 @@ function App() {
       <CreateTodoButton setOpenModal={setOpenModal} />
     </>
   );
-}
+};
 
-export default App;
+export default Home;
