@@ -1,0 +1,9 @@
+.menu-container {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  z-index: 2;
+  width: 80vw;
+  background-color: var(--color-two);
+  border-radius: 0 30px 30px 0;
+}

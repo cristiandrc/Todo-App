@@ -1,18 +1,29 @@
+:root {
+  --color-one: #344fa1;
+  --color-two: #031956;
+  --color-letter: #fefeff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+a {
+  color: var(--color-letter);
+  text-decoration: none;
+}
+
 body {
-  background: #333;
-  color: #fafafa;
+  background: var(--color-one);
+  color: var(--color-letter);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 #root {
   /* margin: 0 24px; */
-  padding-top: 20px;
+  /* padding-top: 20px; */
   position: relative;
   min-height: 100vh;
 }

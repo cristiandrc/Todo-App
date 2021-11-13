@@ -1,0 +1,15 @@
+.burger-container {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  height: 35px;
+  width: 30px;
+  justify-content: space-around;
+}
+
+.burger {
+  width: 30px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: azure;
+}
