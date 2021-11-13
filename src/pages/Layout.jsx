@@ -11,7 +11,7 @@ const Layout = () => {
       <header>
         <BurgerButton click={() => setIsOpenMenu(!isOpenMenu)} />
       </header>
-      {!isOpenMenu && <NavMenu />}
+      {<NavMenu isOpen={isOpenMenu} click={() => setIsOpenMenu(!isOpenMenu)} />}
 
       <Outlet />
     </>

@@ -1,9 +1,41 @@
 .menu-container {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   height: 100vh;
   z-index: 2;
   width: 80vw;
+  transform: translate(-100vw);
   background-color: var(--color-two);
   border-radius: 0 30px 30px 0;
+  transition: transform 1s ease;
+}
+
+.menu-container.open {
+  transform: translate(0);
+}
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: var(--color-letter);
+}
+
+.nav {
+  display: grid;
+  place-items: center;
+  height: 400px;
+  width: 80%;
+}
+
+.nav-ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
