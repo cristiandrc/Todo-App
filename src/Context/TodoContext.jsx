@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "../Hooks/useLocalStorage";
+import useSessionStorage from "../Hooks/useSessionStorage";
 
 const TodoContext = React.createContext();
 const TodoProvider = (props) => {
   const [todos, saveTodos, loading, error] = useLocalStorage("TODOS_V1", []);
+  const [auth, saveAuth] = useSessionStorage();
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -80,6 +82,8 @@ const TodoProvider = (props) => {
         filterTodos,
         filterActive,
         filterCompleted,
+        auth,
+        saveAuth,
       }}
     >
       {props.children}
