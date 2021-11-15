@@ -58,22 +58,44 @@ const TodoProvider = (props) => {
     }
   };
 
-  const deleteTodos = (text) => {
-    const todoIndex = task.findIndex((todo) => todo.text === text);
-    const newTodos = [...task];
-    newTodos.splice(todoIndex, 1);
-    setTask(newTodos);
+  const deleteTask = async (id) => {
+    try {
+      const res = await fetch(URL, {
+        method: "DELETE",
+        headers: {
+          Authorization: `BEARER ${auth.token}`,
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ taskId: id }),
+      });
+      const result = await res.json();
+      console.log(result);
+      getTask();
+    } catch (error) {
+      setError(true);
+      console.error(error.message);
+    }
   };
 
-  const addTodo = (text) => {
-    const newTodo = [...task];
-
-    newTodo.push({
-      text: text,
-      completed: false,
-    });
-
-    setTask(newTodo);
+  const addTask = async (task) => {
+    try {
+      const res = await fetch(URL, {
+        method: "POST",
+        headers: {
+          Authorization: `BEARER ${auth.token}`,
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ task }),
+      });
+      const result = await res.json();
+      console.log(result);
+      getTask();
+    } catch (error) {
+      setError(true);
+      console.error(error.message);
+    }
   };
 
   return (
@@ -85,10 +107,10 @@ const TodoProvider = (props) => {
         completeTask,
         searchValue,
         setSearchValue,
-        deleteTodos,
+        deleteTask,
         openModal,
         setOpenModal,
-        addTodo,
+        addTask,
         task,
         auth,
         saveAuth,

@@ -20,7 +20,7 @@ const Home = () => {
     getTask,
     task,
     completeTask,
-    deleteTodos,
+    deleteTask,
     openModal,
     setOpenModal,
   } = useContext(TodoContext);
@@ -44,7 +44,7 @@ const Home = () => {
             key={item._id}
             {...item}
             onComplete={() => completeTask(item._id, item.completed)}
-            onDelete={() => deleteTodos(item._id)}
+            onDelete={() => deleteTask(item._id)}
           />
         ))}
       </TodoList>
