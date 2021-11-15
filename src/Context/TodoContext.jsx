@@ -14,7 +14,7 @@ const TodoProvider = (props) => {
   const totalTodos = task.length;
 
   //-------------------
-  const getTask = async (token) => {
+  const getTask = async () => {
     try {
       const res = await fetch(URL, {
         method: "GET",
@@ -32,11 +32,30 @@ const TodoProvider = (props) => {
       setLoading(false);
     }
   };
-  const completeTodo = (text) => {
-    const todoIndex = task.findIndex((todo) => todo.text === text);
-    const newTodos = [...task];
-    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTask(newTodos);
+  const completeTask = async (id, completed) => {
+    try {
+      // setLoading(true);
+      const res = await fetch(URL, {
+        method: "PATCH",
+        headers: {
+          Authorization: `BEARER ${auth.token}`,
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+          id: id,
+          data: { completed: !completed },
+        }),
+      });
+      const result = await res.json();
+      getTask();
+      console.log(result);
+      setLoading(false);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+      console.error(error);
+    }
   };
 
   const deleteTodos = (text) => {
@@ -63,7 +82,7 @@ const TodoProvider = (props) => {
         loading,
         error,
         totalTodos,
-        completeTodo,
+        completeTask,
         searchValue,
         setSearchValue,
         deleteTodos,

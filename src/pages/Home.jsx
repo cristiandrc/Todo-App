@@ -19,7 +19,7 @@ const Home = () => {
     loading,
     getTask,
     task,
-    completeTodo,
+    completeTask,
     deleteTodos,
     openModal,
     setOpenModal,
@@ -43,7 +43,7 @@ const Home = () => {
           <TodoItem
             key={item._id}
             {...item}
-            onComplete={() => completeTodo(item._id)}
+            onComplete={() => completeTask(item._id, item.completed)}
             onDelete={() => deleteTodos(item._id)}
           />
         ))}
