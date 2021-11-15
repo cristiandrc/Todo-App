@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { TodoContext } from "../Context/TodoContext";
 
 import Form from "../components/Form";
 const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/auth/login";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { saveAuth } = useContext(TodoContext);
 
   const onSubmit = async (e) => {
@@ -21,7 +19,6 @@ const Login = () => {
     const rta = await response.json();
 
     if (rta.token) {
-      navigate("/");
       saveAuth({ isAuth: true, token: rta.token, user: rta.user });
     }
     console.log(rta);

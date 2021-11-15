@@ -1,7 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { TodoContext } from "../Context/TodoContext";
 import "./styles/navMenu.css";
+
 const NavMenu = ({ click, isOpen }) => {
+  const { deleteAuth } = useContext(TodoContext);
+
   return (
     <div className={`menu-container ${isOpen && "open"}`}>
       <button className="nav-button" onClick={click}>
@@ -13,13 +17,10 @@ const NavMenu = ({ click, isOpen }) => {
             <Link to="/">Home</Link>
           </li>
           <li className="nav-li">
-            <Link to="/login">Login</Link>
+            <Link to="/change-password">Change Password</Link>
           </li>
           <li className="nav-li">
-            <Link to="/resetPassword">Change Password</Link>
-          </li>
-          <li className="nav-li">
-            <Link to="/login">Log out</Link>
+            <button onClick={deleteAuth}>Log out</button>
           </li>
         </ul>
       </nav>

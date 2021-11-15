@@ -39,3 +39,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.nav-ul {
+  list-style: none;
+}

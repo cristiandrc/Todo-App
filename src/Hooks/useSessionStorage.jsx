@@ -17,7 +17,11 @@ const useSessionStorage = () => {
     setAuth(data);
   };
 
-  return [auth, saveAuth];
+  const deleteAuth = () => {
+    sessionStorage.removeItem(itemName);
+    setAuth({ isAuth: false, token: null, user: null });
+  };
+  return [auth, saveAuth, deleteAuth];
 };
 
 export default useSessionStorage;

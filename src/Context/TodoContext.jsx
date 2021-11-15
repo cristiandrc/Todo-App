@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import useSessionStorage from "../Hooks/useSessionStorage";
 const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/task";
+const URL_auth = "https://vast-badlands-07993.herokuapp.com/api/v1/auth";
 
 const TodoContext = React.createContext();
+
 const TodoProvider = (props) => {
-  const [auth, saveAuth] = useSessionStorage();
+  const [auth, saveAuth, deleteAuth] = useSessionStorage();
   const [task, setTask] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -98,6 +101,28 @@ const TodoProvider = (props) => {
     }
   };
 
+  const changePassword = async ({ password, newPassword }) => {
+    try {
+      const res = await fetch(`${URL_auth}/change-password`, {
+        method: "POST",
+        headers: {
+          Authorization: `BEARER ${auth.token}`,
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ password, newPassword }),
+      });
+      const result = await res.json();
+      console.log(result);
+      if (result.modifiedCount) {
+        saveAuth({ isAuth: false, token: null, user: null });
+      }
+    } catch (error) {
+      setError(true);
+      console.error(error.message);
+    }
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -105,6 +130,7 @@ const TodoProvider = (props) => {
         error,
         totalTodos,
         completeTask,
+        getTask,
         searchValue,
         setSearchValue,
         deleteTask,
@@ -114,7 +140,8 @@ const TodoProvider = (props) => {
         task,
         auth,
         saveAuth,
-        getTask,
+        deleteAuth,
+        changePassword,
       }}
     >
       {props.children}
