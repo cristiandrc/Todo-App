@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import useSessionStorage from "../Hooks/useSessionStorage";
+
 const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/task";
+const URL_USER = "https://vast-badlands-07993.herokuapp.com/api/v1/user";
 const URL_auth = "https://vast-badlands-07993.herokuapp.com/api/v1/auth";
 
 const TodoContext = React.createContext();
@@ -101,6 +103,24 @@ const TodoProvider = (props) => {
     }
   };
 
+  const createAccount = async ({ name, email, password }) => {
+    try {
+      const res = await fetch(URL_USER, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ name, email, password }),
+      });
+      const result = await res.json();
+      console.log(result);
+      return result;
+    } catch (error) {
+      setError(error);
+      console.error(error.message);
+    }
+  };
   const changePassword = async ({ password, newPassword }) => {
     try {
       const res = await fetch(`${URL_auth}/change-password`, {
@@ -142,6 +162,7 @@ const TodoProvider = (props) => {
         saveAuth,
         deleteAuth,
         changePassword,
+        createAccount,
       }}
     >
       {props.children}

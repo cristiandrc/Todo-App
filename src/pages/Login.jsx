@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { TodoContext } from "../Context/TodoContext";
 
 import Form from "../components/Form";
@@ -28,6 +29,11 @@ const Login = () => {
     <section className="login-container">
       <span>Login</span>
       <Form submit={onSubmit} />
+      <div>
+        <Link to="reset-password">forgot password?</Link>
+        <br />
+        <Link to="/sign-up">SIGN UP</Link>
+      </div>
     </section>
   );
 };

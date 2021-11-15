@@ -7,6 +7,7 @@ import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
 import Layout from "../pages/Layout";
 import ChangePassword from "../pages/ChangePassword";
+import SingUp from "../pages/SingUp";
 
 function App() {
   const { auth } = useContext(TodoContext);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/login" element={<Navigate to="/" replace />} />
         )}
         <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SingUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

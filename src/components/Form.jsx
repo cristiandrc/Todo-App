@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/form.css";
 import useField from "../Hooks/useField";
 
-const Form = ({ isLogUp, submit, isChangePassword }) => {
+const Form = ({ singUp, submit, isChangePassword }) => {
   const name = useField({ type: "name" });
   const email = useField({ type: "email" });
   const password = useField({ type: "password" });
@@ -19,7 +19,7 @@ const Form = ({ isLogUp, submit, isChangePassword }) => {
   };
   return (
     <form onSubmit={onSubmit} className="log-form">
-      {isLogUp && <input {...name} className="log-input" placeholder="Name" />}
+      {singUp && <input {...name} className="log-input" placeholder="Name" />}
       {!isChangePassword && (
         <input {...email} className="log-input" placeholder="Email" />
       )}
