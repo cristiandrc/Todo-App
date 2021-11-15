@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/TodoItem.css";
 import { MdDelete, MdCheck } from "react-icons/md";
 
-const TodoItem = ({ text, completed, onComplete, onDelete }) => {
+const TodoItem = ({ task, completed, onComplete, onDelete }) => {
   return (
     <li className="todoItem-container">
       <span
@@ -14,7 +14,7 @@ const TodoItem = ({ text, completed, onComplete, onDelete }) => {
         <MdCheck />
       </span>
       <p className={`todoItem-p ${completed && "todoItem-p__completed"} `}>
-        {text}
+        {task}
       </p>
       <span className=" icon todoItem-delete" onClick={onDelete}>
         <MdDelete />

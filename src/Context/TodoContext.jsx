@@ -1,66 +1,60 @@
 import React, { useState } from "react";
-import { useLocalStorage } from "../Hooks/useLocalStorage";
 import useSessionStorage from "../Hooks/useSessionStorage";
+const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/task";
 
 const TodoContext = React.createContext();
 const TodoProvider = (props) => {
-  const [todos, saveTodos, loading, error] = useLocalStorage("TODOS_V1", []);
   const [auth, saveAuth] = useSessionStorage();
+  const [task, setTask] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const completedTodos = todos.filter((todo) => !!todo.completed).length;
-  const totalTodos = todos.length;
-
-  const getFilter = (id) => {
-    if (id === "All") {
-      return todos.filter((todo) => {
-        return todo.text.toLowerCase().includes(searchValue.toLowerCase());
-      });
-    } else if (id === "Active") {
-      const newFilter = todos.filter((todo) => todo.completed === false);
-      return newFilter.filter((filter) =>
-        filter.text.toLowerCase().includes(searchValue.toLowerCase())
-      );
-    } else if (id === "Completed") {
-      const newFilter = todos.filter((todo) => todo.completed === true);
-      return newFilter.filter((filter) =>
-        filter.text.toLowerCase().includes(searchValue.toLowerCase())
-      );
-    } else {
-      return null;
-    }
-  };
-
-  //Filtros
-  const filterTodos = getFilter("All");
-  const filterActive = getFilter("Active");
-  const filterCompleted = getFilter("Completed");
+  const totalTodos = task.length;
 
   //-------------------
+  const getTask = async (token) => {
+    try {
+      const res = await fetch(URL, {
+        method: "GET",
+        headers: { Authorization: `BEARER ${auth.token}` },
+        mode: "cors",
+      });
+      const result = await res.json();
 
+      setTask(result);
+      setError(false);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setError(true);
+      setLoading(false);
+    }
+  };
   const completeTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
+    const todoIndex = task.findIndex((todo) => todo.text === text);
+    const newTodos = [...task];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    saveTodos(newTodos);
+    setTask(newTodos);
   };
 
   const deleteTodos = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
+    const todoIndex = task.findIndex((todo) => todo.text === text);
+    const newTodos = [...task];
     newTodos.splice(todoIndex, 1);
-    saveTodos(newTodos);
+    setTask(newTodos);
   };
 
   const addTodo = (text) => {
-    const newTodo = [...todos];
+    const newTodo = [...task];
 
     newTodo.push({
       text: text,
       completed: false,
     });
 
-    saveTodos(newTodo);
+    setTask(newTodo);
   };
 
   return (
@@ -73,17 +67,13 @@ const TodoProvider = (props) => {
         searchValue,
         setSearchValue,
         deleteTodos,
-        completedTodos,
         openModal,
         setOpenModal,
         addTodo,
-        todos,
-        getFilter,
-        filterTodos,
-        filterActive,
-        filterCompleted,
+        task,
         auth,
         saveAuth,
+        getTask,
       }}
     >
       {props.children}

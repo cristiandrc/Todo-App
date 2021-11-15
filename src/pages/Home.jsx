@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import { TodoCounter } from "../components/TodoCounter";
 import { TodoSearch } from "../components/TodoSearch";
@@ -11,60 +11,42 @@ import { TodoForm } from "../components/TodoForm";
 import { TodosError } from "../components/TodosError";
 import { TodosLoading } from "../components/TodosLoading";
 import { EmptyTodos } from "../components/EmptyTodos";
-import { Menu } from "../components/Menu";
+// import { Menu } from "../components/Menu";
 
 const Home = () => {
   const {
-    loading,
     error,
+    loading,
+    getTask,
+    task,
     completeTodo,
     deleteTodos,
     openModal,
     setOpenModal,
-    todos,
-    filterTodos,
-    filterActive,
-    filterCompleted,
   } = useContext(TodoContext);
 
-  const [stateFilter, setStateFilter] = useState("Active");
+  useEffect(() => {
+    getTask();
+  }, []);
   return (
     <>
       <TodoCounter />
-      <Menu getFilter={setStateFilter} />
+      {/* <Menu getFilter={setStateFilter} /> */}
       <TodoSearch />
       <TodoList>
         {error && <TodosError />}
         {loading &&
           new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
-        {!loading && !todos.length && <EmptyTodos />}
+        {!error && !loading && !task.length && <EmptyTodos />}
 
-        {stateFilter === "Active"
-          ? filterActive.map((item, i) => (
-              <TodoItem
-                key={i}
-                {...item}
-                onComplete={() => completeTodo(item.text)}
-                onDelete={() => deleteTodos(item.text)}
-              />
-            ))
-          : stateFilter === "All"
-          ? filterTodos.map((item, i) => (
-              <TodoItem
-                key={i}
-                {...item}
-                onComplete={() => completeTodo(item.text)}
-                onDelete={() => deleteTodos(item.text)}
-              />
-            ))
-          : filterCompleted.map((item, i) => (
-              <TodoItem
-                key={i}
-                {...item}
-                onComplete={() => completeTodo(item.text)}
-                onDelete={() => deleteTodos(item.text)}
-              />
-            ))}
+        {task.map((item) => (
+          <TodoItem
+            key={item._id}
+            {...item}
+            onComplete={() => completeTodo(item._id)}
+            onDelete={() => deleteTodos(item._id)}
+          />
+        ))}
       </TodoList>
       {!!openModal && (
         <Modal>
