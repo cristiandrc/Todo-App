@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Layout from "../pages/Layout";
 import ChangePassword from "../pages/ChangePassword";
 import SingUp from "../pages/SingUp";
+import ResetPassword from "../pages/ResetPassword";
 
 function App() {
   const { auth } = useContext(TodoContext);
@@ -34,6 +35,7 @@ function App() {
         {auth.isAuth && (
           <Route path="/login" element={<Navigate to="/" replace />} />
         )}
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SingUp />} />
         <Route path="*" element={<NotFound />} />

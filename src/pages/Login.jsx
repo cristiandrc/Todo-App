@@ -30,7 +30,7 @@ const Login = () => {
       <span>Login</span>
       <Form submit={onSubmit} />
       <div>
-        <Link to="reset-password">forgot password?</Link>
+        <Link to="/reset-password">forgot password?</Link>
         <br />
         <Link to="/sign-up">SIGN UP</Link>
       </div>

@@ -143,6 +143,25 @@ const TodoProvider = (props) => {
     }
   };
 
+  const sendEmail = async ({ email }) => {
+    try {
+      const res = await fetch(`${URL_auth}/recovery`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ email }),
+      });
+      const result = await res.json();
+      console.log(result);
+      return result;
+    } catch (error) {
+      setError(error);
+      console.error(error.message);
+    }
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -163,6 +182,7 @@ const TodoProvider = (props) => {
         deleteAuth,
         changePassword,
         createAccount,
+        sendEmail,
       }}
     >
       {props.children}

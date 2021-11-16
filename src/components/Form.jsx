@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/form.css";
 import useField from "../Hooks/useField";
 
-const Form = ({ singUp, submit, isChangePassword }) => {
+const Form = ({ singUp, submit, isChangePassword, resetPassword }) => {
   const name = useField({ type: "name" });
   const email = useField({ type: "email" });
   const password = useField({ type: "password" });
@@ -23,7 +23,9 @@ const Form = ({ singUp, submit, isChangePassword }) => {
       {!isChangePassword && (
         <input {...email} className="log-input" placeholder="Email" />
       )}
-      <input {...password} className="log-input" placeholder="Password" />
+      {!resetPassword && (
+        <input {...password} className="log-input" placeholder="Password" />
+      )}
       {isChangePassword && (
         <input
           {...newPassword}
