@@ -9,6 +9,7 @@ import Layout from "../pages/Layout";
 import ChangePassword from "../pages/ChangePassword";
 import SingUp from "../pages/SingUp";
 import ResetPassword from "../pages/ResetPassword";
+import Recovery from "../pages/Recovery";
 
 function App() {
   const { auth } = useContext(TodoContext);
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={<Navigate to="/" replace />} />
         )}
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/recovery/:token" element={<Recovery />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SingUp />} />
         <Route path="*" element={<NotFound />} />

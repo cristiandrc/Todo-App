@@ -162,6 +162,24 @@ const TodoProvider = (props) => {
     }
   };
 
+  const recoveryPassword = async ({ password, token }) => {
+    try {
+      const res = await fetch(`${URL_auth}/recovery-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ newPassword: password, token }),
+      });
+      const result = await res.json();
+      console.log(result);
+      return result;
+    } catch (error) {
+      setError(true);
+    }
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -183,6 +201,7 @@ const TodoProvider = (props) => {
         changePassword,
         createAccount,
         sendEmail,
+        recoveryPassword,
       }}
     >
       {props.children}

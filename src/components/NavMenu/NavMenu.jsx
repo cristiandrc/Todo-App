@@ -13,10 +13,10 @@ const NavMenu = ({ click, isOpen }) => {
       </button>
       <nav className="nav">
         <ul className="nav-ul">
-          <li className="nav-li">
+          <li className="nav-li" onClick={click}>
             <Link to="/">Home</Link>
           </li>
-          <li className="nav-li">
+          <li className="nav-li" onClick={click}>
             <Link to="/change-password">Change Password</Link>
           </li>
           <li className="nav-li">
