@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { TodoContext } from "../Context/TodoContext";
 import Loading from "../components/Loading/Loading";
 
-import Form from "../components/Form";
+import Form from "../components/Form/Form";
 const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/auth/login";
 
 const Login = () => {

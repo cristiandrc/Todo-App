@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/TodosLoading.css";
+import "./TodosLoading.css";
 import { MdDelete, MdCheck } from "react-icons/md";
 
 function TodosLoading() {

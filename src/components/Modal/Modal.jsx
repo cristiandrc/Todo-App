@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
-import "../styles/Modal.css";
-import { TodoContext } from "../Context/TodoContext";
+import "./Modal.css";
+import { TodoContext } from "../../Context/TodoContext";
 
 const Modal = ({ children }) => {
   const { setOpenModal } = useContext(TodoContext);

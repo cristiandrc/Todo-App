@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/burgerButton.css";
+import "./styles.css";
 
 const BurgerButton = ({ click }) => (
   <div onClick={() => click()} className="burger-container">

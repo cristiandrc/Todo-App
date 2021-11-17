@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { TodoContext } from "../Context/TodoContext";
-import Form from "../components/Form";
+import Form from "../components/Form/Form";
 
 const SingUp = () => {
   const { error, createAccount } = useContext(TodoContext);

@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/EmptyTodos.css";
+import "./EmptyTodos.css";
 function EmptyTodos() {
   return (
     <p className="empty-p">

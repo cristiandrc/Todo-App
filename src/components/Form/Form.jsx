@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles/form.css";
-import useField from "../Hooks/useField";
+import "./form.css";
+import useField from "../../Hooks/useField";
 
 const Form = ({ singUp, submit, isChangePassword, resetPassword }) => {
   const name = useField({ type: "name" });

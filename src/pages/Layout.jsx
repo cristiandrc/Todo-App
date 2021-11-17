@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import BurgerButton from "../components/BurgerButton";
-import NavMenu from "../components/NavMenu";
+import BurgerButton from "../components/BurgerButton/BurgerButton";
+import NavMenu from "../components/NavMenu/NavMenu";
 
 const Layout = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);

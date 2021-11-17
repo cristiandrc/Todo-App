@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { TodoContext } from "../Context/TodoContext";
-import "./styles/navMenu.css";
+import { TodoContext } from "../../Context/TodoContext";
+import "./navMenu.css";
 
 const NavMenu = ({ click, isOpen }) => {
   const { deleteAuth } = useContext(TodoContext);

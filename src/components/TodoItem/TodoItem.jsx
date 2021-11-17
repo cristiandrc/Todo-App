@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/TodoItem.css";
+import "./TodoItem.css";
 import { MdDelete, MdCheck } from "react-icons/md";
 
 const TodoItem = ({ task, completed, onComplete, onDelete }) => {

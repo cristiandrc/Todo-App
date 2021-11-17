@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { TodoContext } from "../Context/TodoContext";
-import "../styles/TodosForm.css";
-import useField from "../Hooks/useField";
+import { TodoContext } from "../../Context/TodoContext";
+import "./TodosForm.css";
+import useField from "../../Hooks/useField";
 
 const TodoForm = () => {
   const newTask = useField({ type: "text" });
