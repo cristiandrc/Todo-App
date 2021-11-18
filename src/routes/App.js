@@ -7,7 +7,7 @@ import NotFound from "../pages/NotFound";
 import Login from "../pages/Login/Login";
 import Layout from "../pages/Layout";
 import ChangePassword from "../pages/ChangePassword";
-import SingUp from "../pages/SingUp";
+import SingUp from "../pages/SignUp/SignUp";
 import ResetPassword from "../pages/ResetPassword";
 import Recovery from "../pages/Recovery";
 
