@@ -1,0 +1,23 @@
+.login-container {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  /* overflow: hidden; */
+}
+
+.login-title {
+  font-size: 30px;
+}
+
+.login-singUp {
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 30px;
+  margin-top: 20px;
+  background-color: rgb(35, 82, 211);
+  border-radius: 20px;
+}

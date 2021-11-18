@@ -2,7 +2,7 @@ import React from "react";
 import "./form.css";
 import useField from "../../Hooks/useField";
 
-const Form = ({ singUp, submit, isChangePassword, resetPassword }) => {
+const Form = ({ singUp, submit, isChangePassword, resetPassword, value }) => {
   const name = useField({ type: "name" });
   const email = useField({ type: "email" });
   const password = useField({ type: "password" });
@@ -33,7 +33,7 @@ const Form = ({ singUp, submit, isChangePassword, resetPassword }) => {
           placeholder="NewPassword"
         />
       )}
-      <input type="submit" className="log-submit" />
+      <input type="submit" className="log-submit" value={value} />
     </form>
   );
 };

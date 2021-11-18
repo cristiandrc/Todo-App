@@ -18,6 +18,30 @@ const TodoProvider = (props) => {
   const [openModal, setOpenModal] = useState(false);
   const totalTodos = task.length;
 
+  const login = async ({ email, password }) => {
+    try {
+      setError(false);
+      const response = await fetch(`${URL_auth}/login`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const rta = await response.json();
+
+      if (rta.token) {
+        saveAuth({ isAuth: true, token: rta.token, user: rta.user });
+      }
+      if (rta.statusCode === 401) setError(true);
+      console.log(rta);
+      return rta;
+    } catch (error) {
+      setError(true);
+      console.error(error.message);
+    }
+  };
   //-------------------
   const getTask = async () => {
     try {
@@ -195,6 +219,7 @@ const TodoProvider = (props) => {
         setOpenModal,
         addTask,
         task,
+        login,
         auth,
         saveAuth,
         deleteAuth,

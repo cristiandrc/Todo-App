@@ -1,6 +1,7 @@
 .log-form {
   display: flex;
-  height: 500px;
+  min-height: 200px;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,13 +11,19 @@
 .log-input {
   background-color: var(--color-two);
   border: none;
-  border-radius: 2px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 11px 0px rgb(0 0 0 / 42%);
   font-size: 18px;
   color: var(--color-letter);
   width: 280px;
   height: 40px;
   padding: 0 20px;
   outline: none;
+  transition: 0.3s ease all;
+}
+
+.log-input:focus {
+  background-color: rebeccapurple;
 }
 
 .log-input::placeholder {
@@ -27,4 +34,9 @@
 .log-submit {
   width: 250px;
   height: 40px;
+  font-size: 20px;
+  background-color: #0099ff;
+  color: var(--color-letter);
+  border: none;
+  border-radius: 20px;
 }
