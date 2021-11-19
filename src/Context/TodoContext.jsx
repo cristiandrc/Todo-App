@@ -22,6 +22,7 @@ const TodoProvider = (props) => {
   const login = async ({ email, password }) => {
     try {
       setError(false);
+      setAuthLoading(true);
       const response = await fetch(`${URL_auth}/login`, {
         method: "POST",
         mode: "cors",
@@ -36,6 +37,7 @@ const TodoProvider = (props) => {
         saveAuth({ isAuth: true, token: rta.token, user: rta.user });
       }
       if (rta.statusCode === 401) setError(true);
+      setAuthLoading(false);
       console.log(rta);
       return rta;
     } catch (error) {
@@ -130,6 +132,8 @@ const TodoProvider = (props) => {
 
   const createAccount = async ({ name, email, password }) => {
     try {
+      setAuthLoading(true);
+      setError(false);
       const res = await fetch(URL_USER, {
         method: "POST",
         headers: {
@@ -139,9 +143,14 @@ const TodoProvider = (props) => {
         body: JSON.stringify({ name, email, password }),
       });
       const result = await res.json();
+      if (result.statusCode === 400) {
+        throw new Error("Bad Request");
+      }
+      setAuthLoading(false);
       console.log(result);
       return result;
     } catch (error) {
+      setAuthLoading(false);
       setError(error);
       console.error(error.message);
     }
