@@ -17,7 +17,7 @@ const SignUp = () => {
 
   return (
     <section className="singUp-container">
-      <h2 className="singUp-tittle">Sign Up</h2>
+      <h2 className="singUp-title">Sign Up</h2>
       {error && <span>error</span>}
       {authLoading && <Loading />}
       <Form singUp submit={submit} value="Sign Up" />

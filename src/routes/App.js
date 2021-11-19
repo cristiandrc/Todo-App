@@ -9,7 +9,7 @@ import Layout from "../pages/Layout";
 import ChangePassword from "../pages/ChangePassword";
 import SingUp from "../pages/SignUp/SignUp";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
-import Recovery from "../pages/Recovery";
+import Recovery from "../pages/Recovery/Recovery";
 
 function App() {
   const { auth } = useContext(TodoContext);

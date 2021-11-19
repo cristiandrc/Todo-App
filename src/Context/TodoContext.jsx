@@ -41,6 +41,7 @@ const TodoProvider = (props) => {
       console.log(rta);
       return rta;
     } catch (error) {
+      setAuthLoading(false);
       setError(true);
       console.error(error.message);
     }
@@ -151,6 +152,7 @@ const TodoProvider = (props) => {
       return result;
     } catch (error) {
       setAuthLoading(false);
+      console.log("hola");
       setError(error);
       console.error(error.message);
     }
@@ -207,6 +209,8 @@ const TodoProvider = (props) => {
 
   const recoveryPassword = async ({ password, token }) => {
     try {
+      setAuthLoading(true);
+      setError(false);
       const res = await fetch(`${URL_auth}/recovery-password`, {
         method: "POST",
         headers: {
@@ -216,9 +220,14 @@ const TodoProvider = (props) => {
         body: JSON.stringify({ newPassword: password, token }),
       });
       const result = await res.json();
+      if (result.statusCode === 401 || result.statusCode === 400) {
+        throw new Error("error 400 o 401");
+      }
       console.log(result);
+      setAuthLoading(false);
       return result;
     } catch (error) {
+      setAuthLoading(false);
       setError(true);
     }
   };

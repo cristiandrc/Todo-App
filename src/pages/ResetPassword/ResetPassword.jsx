@@ -18,11 +18,13 @@ const ResetPassword = () => {
   };
   return (
     <section className="resetPassword-container">
-      <h2>Reset Password</h2>
+      <h2 className="resetPassword-title">Reset Password</h2>
       {error && <p>Error</p>}
       {authLoading && <Loading />}
       <Form resetPassword submit={submit} value="Send" />
-      <Link to="/login">LOGIN</Link>
+      <Link className="resetPassword-login" to="/login">
+        LOGIN
+      </Link>
       <BackgroundFigure />
     </section>
   );
