@@ -12,6 +12,7 @@ const TodoProvider = (props) => {
   const [task, setTask] = useState([]);
 
   const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const [searchValue, setSearchValue] = useState("");
@@ -169,6 +170,8 @@ const TodoProvider = (props) => {
 
   const sendEmail = async ({ email }) => {
     try {
+      setAuthLoading(true);
+      setError(false);
       const res = await fetch(`${URL_auth}/recovery`, {
         method: "POST",
         headers: {
@@ -178,9 +181,16 @@ const TodoProvider = (props) => {
         body: JSON.stringify({ email }),
       });
       const result = await res.json();
-      console.log(result);
+
+      setAuthLoading(false);
+
+      if (result.statusCode === 401 || result.statusCode === 400) {
+        return setError(true);
+      }
+
       return result;
     } catch (error) {
+      setAuthLoading(false);
       setError(error);
       console.error(error.message);
     }
@@ -220,6 +230,7 @@ const TodoProvider = (props) => {
         addTask,
         task,
         login,
+        authLoading,
         auth,
         saveAuth,
         deleteAuth,

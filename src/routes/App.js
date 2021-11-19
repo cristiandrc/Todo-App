@@ -8,7 +8,7 @@ import Login from "../pages/Login/Login";
 import Layout from "../pages/Layout";
 import ChangePassword from "../pages/ChangePassword";
 import SingUp from "../pages/SignUp/SignUp";
-import ResetPassword from "../pages/ResetPassword";
+import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import Recovery from "../pages/Recovery";
 
 function App() {

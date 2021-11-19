@@ -12,7 +12,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     setLoading(true);
-    const rta = await login({ email: e.email, password: e.password });
+    await login({ email: e.email, password: e.password });
     setLoading(false);
   };
 
