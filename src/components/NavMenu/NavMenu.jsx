@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { TodoContext } from "../../Context/TodoContext";
 import "./navMenu.css";
+import BackgroundFigure from "../BackgroundFigure/BackgroundFigure";
 
 const NavMenu = ({ click, isOpen }) => {
   const { auth, deleteAuth } = useContext(TodoContext);
-  console.log(auth);
   return (
     <div className={`menu-container ${isOpen && "open"}`}>
       <button className="nav-button" onClick={click}>
@@ -21,10 +21,13 @@ const NavMenu = ({ click, isOpen }) => {
             <Link to="/change-password">Change Password</Link>
           </li>
           <li className="nav-li">
-            <button onClick={deleteAuth}>Log out</button>
+            <button className="nav-logOut" onClick={deleteAuth}>
+              Log out
+            </button>
           </li>
         </ul>
       </nav>
+      <BackgroundFigure top />
     </div>
   );
 };

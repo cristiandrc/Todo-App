@@ -1,4 +1,11 @@
-.login-background {
+.background-bottom {
+  position: absolute;
+  z-index: -1;
+  height: 400px;
+  bottom: 0;
+}
+
+.background-top {
   position: absolute;
   z-index: -1;
   height: 400px;

@@ -12,6 +12,7 @@
   background-color: var(--color-two);
   border-radius: 0 30px 30px 0;
   transition: transform 1s ease;
+  overflow: hidden;
 }
 
 .menu-container.open {
@@ -29,6 +30,11 @@
   color: var(--color-letter);
   border: solid 2px var(--color-letter);
   opacity: 0.6;
+  cursor: pointer;
+  transition: 0.2s ease opacity;
+}
+.nav-button:hover {
+  opacity: 0.8;
 }
 
 .nav-button-arrow {
@@ -45,17 +51,38 @@
 .nav {
   display: grid;
   place-items: center;
-  height: 400px;
+  height: 300px;
   width: 80%;
 }
 
 .nav-ul {
   height: 100%;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.nav-ul {
+.nav-li {
   list-style: none;
+  display: inline-block;
+  width: auto;
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-left: solid 0px var(--color-one);
+  transition: 0.1s ease border;
+  padding: 3px 6px;
+}
+
+.nav-li:hover {
+  border-left: 8px solid var(--color-one);
+}
+
+.nav-logOut {
+  background: transparent;
+  border: none;
+  color: var(--color-letter);
+  font-size: 20px;
+  cursor: pointer;
 }
