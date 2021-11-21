@@ -6,7 +6,7 @@ import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login/Login";
 import Layout from "../pages/Layout";
-import ChangePassword from "../pages/ChangePassword";
+import ChangePassword from "../pages/ChangePassword/ChangePassword";
 import SingUp from "../pages/SignUp/SignUp";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import Recovery from "../pages/Recovery/Recovery";
@@ -23,14 +23,14 @@ function App() {
 
         {!auth.isAuth && (
           <Route
-            path="/change-password"
+            path="change-password"
             element={<Navigate to="/login" replace />}
           />
         )}
 
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="change-password" element={<ChangePassword />} />
         </Route>
 
         {auth.isAuth && (

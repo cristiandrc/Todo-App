@@ -103,7 +103,6 @@ const TodoProvider = (props) => {
         body: JSON.stringify({ taskId: id }),
       });
       const result = await res.json();
-      console.log(result);
       getTask();
     } catch (error) {
       setError(true);
@@ -159,6 +158,8 @@ const TodoProvider = (props) => {
   };
   const changePassword = async ({ password, newPassword }) => {
     try {
+      setError(false);
+      setAuthLoading(true);
       const res = await fetch(`${URL_auth}/change-password`, {
         method: "POST",
         headers: {
@@ -170,10 +171,18 @@ const TodoProvider = (props) => {
       });
       const result = await res.json();
       console.log(result);
+      setAuthLoading(false);
+
+      if (result.statusCode === 401 || result.statusCode === 400) {
+        return setError(true);
+      }
+
+      console.log(result);
       if (result.modifiedCount) {
         saveAuth({ isAuth: false, token: null, user: null });
       }
     } catch (error) {
+      setAuthLoading(false);
       setError(true);
       console.error(error.message);
     }

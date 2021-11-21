@@ -4,13 +4,14 @@ import { TodoContext } from "../../Context/TodoContext";
 import "./navMenu.css";
 
 const NavMenu = ({ click, isOpen }) => {
-  const { deleteAuth } = useContext(TodoContext);
-
+  const { auth, deleteAuth } = useContext(TodoContext);
+  console.log(auth);
   return (
     <div className={`menu-container ${isOpen && "open"}`}>
       <button className="nav-button" onClick={click}>
-        X
+        <span className="nav-button-arrow"></span>
       </button>
+      <h2>{auth?.user?.name}</h2>
       <nav className="nav">
         <ul className="nav-ul">
           <li className="nav-li" onClick={click}>

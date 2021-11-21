@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   top: 0;
   height: 100vh;
   z-index: 2;
@@ -18,12 +19,27 @@
 }
 .nav-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  top: 25px;
+  right: 25px;
   background-color: transparent;
   border: none;
+  border-radius: 50%;
   color: var(--color-letter);
+  border: solid 2px var(--color-letter);
+  opacity: 0.6;
+}
+
+.nav-button-arrow {
+  position: relative;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: solid 2px var(--color-letter);
+  border-top: none;
+  border-right: none;
+  transform: translate(10px) rotate(45deg);
 }
 
 .nav {
