@@ -1,17 +1,19 @@
 import { useContext, useEffect } from "react";
 
-import { TodoCounter } from "../components/TodoCounter/TodoCounter";
-import { TodoSearch } from "../components/TodoSearch/TodoSearch";
-import { TodoItem } from "../components/TodoItem/TodoItem";
-import { TodoList } from "../components/TodoList/TodoList";
-import { CreateTodoButton } from "../components/CreateTodoButton/CreateTodoButton";
-import { TodoContext } from "../Context/TodoContext";
-import { Modal } from "../components/Modal/Modal";
-import { TodoForm } from "../components/TodoForm/TodoForm";
-import { TodosError } from "../components/TodoError/TodosError";
-import { TodosLoading } from "../components/TodosLoading/TodosLoading";
-import { EmptyTodos } from "../components/EmpetyTodos/EmptyTodos";
+import { TodoCounter } from "../../components/TodoCounter/TodoCounter";
+import { TodoSearch } from "../../components/TodoSearch/TodoSearch";
+import { TodoItem } from "../../components/TodoItem/TodoItem";
+import { TodoList } from "../../components/TodoList/TodoList";
+import { CreateTodoButton } from "../../components/CreateTodoButton/CreateTodoButton";
+import { TodoContext } from "../../Context/TodoContext";
+import { Modal } from "../../components/Modal/Modal";
+import { TodoForm } from "../../components/TodoForm/TodoForm";
+import { TodosError } from "../../components/TodoError/TodosError";
+import { TodosLoading } from "../../components/TodosLoading/TodosLoading";
+import { EmptyTodos } from "../../components/EmpetyTodos/EmptyTodos";
+import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 // import { Menu } from "../components/Menu/Menu.jsx";
+import "./home.css";
 
 const Home = () => {
   const {
@@ -29,9 +31,8 @@ const Home = () => {
     getTask();
   }, []);
   return (
-    <>
+    <main className="main-container">
       <TodoCounter />
-      {/* <Menu getFilter={setStateFilter} /> */}
       <TodoSearch />
       <TodoList>
         {error && <TodosError />}
@@ -54,7 +55,7 @@ const Home = () => {
         </Modal>
       )}
       <CreateTodoButton setOpenModal={setOpenModal} />
-    </>
+    </main>
   );
 };
 

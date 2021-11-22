@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { TodoContext } from "../Context/TodoContext";
 
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login/Login";
 import Layout from "../pages/Layout";

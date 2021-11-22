@@ -3,12 +3,20 @@ import { TodoContext } from "../../Context/TodoContext";
 import "./TodoCounter.css";
 
 const TodoCounter = () => {
-  const { totalTodos, completedTodos } = useContext(TodoContext);
+  const { task } = useContext(TodoContext);
+
   return (
-    <h2 className="todo-counter">
-      Has Completado <span>{completedTodos}</span> de <span>{totalTodos}</span>{" "}
-      TAREAS
-    </h2>
+    <div className="counter-container">
+      <p className="todo-counter">
+        Task <span>{task.length}</span>
+      </p>
+      <p>completed {task.filter((e) => e.completed).length}</p>
+      <progress
+        className="counter-progress"
+        max={task.length}
+        value={task.filter((e) => e.completed).length}
+      />
+    </div>
   );
 };
 

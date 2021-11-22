@@ -17,7 +17,6 @@ const TodoProvider = (props) => {
 
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const totalTodos = task.length;
 
   const login = async ({ email, password }) => {
     try {
@@ -103,7 +102,9 @@ const TodoProvider = (props) => {
         body: JSON.stringify({ taskId: id }),
       });
       const result = await res.json();
+
       getTask();
+      return result;
     } catch (error) {
       setError(true);
       console.error(error.message);
@@ -246,7 +247,6 @@ const TodoProvider = (props) => {
       value={{
         loading,
         error,
-        totalTodos,
         completeTask,
         getTask,
         searchValue,

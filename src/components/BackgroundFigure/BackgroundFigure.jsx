@@ -1,10 +1,10 @@
 import "./backgroundFigure.css";
-const BackgroundFigure = ({ top }) => {
+const BackgroundFigure = ({ two }) => {
   return (
     <>
-      {top && (
+      {two && (
         <svg
-          className="background-top "
+          className="background-two "
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1040 320"
         >
@@ -15,9 +15,9 @@ const BackgroundFigure = ({ top }) => {
           ></path>
         </svg>
       )}
-      {!top && (
+      {!two && (
         <svg
-          className="background-bottom"
+          className="background-one"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
         >

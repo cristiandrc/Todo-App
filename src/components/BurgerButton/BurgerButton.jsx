@@ -1,11 +1,10 @@
 import React from "react";
-import "./styles.css";
-
+import "./burgerButton.css";
 const BurgerButton = ({ click }) => (
-  <div onClick={() => click()} className="burger-container">
+  <button onClick={() => click()} className="burger-container">
     <span className="burger burger-top"></span>
     <span className="burger burger-bottom"></span>
-  </div>
+  </button>
 );
 
 export default BurgerButton;

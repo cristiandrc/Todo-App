@@ -27,7 +27,7 @@ const NavMenu = ({ click, isOpen }) => {
           </li>
         </ul>
       </nav>
-      <BackgroundFigure top />
+      <BackgroundFigure two />
     </div>
   );
 };

@@ -1,11 +1,11 @@
-.background-bottom {
+.background-one {
   position: absolute;
   z-index: -1;
   height: 400px;
   bottom: 0;
 }
 
-.background-top {
+.background-two {
   position: absolute;
   z-index: -1;
   height: 400px;
