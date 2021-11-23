@@ -11,8 +11,7 @@ import { TodoForm } from "../../components/TodoForm/TodoForm";
 import { TodosError } from "../../components/TodoError/TodosError";
 import { TodosLoading } from "../../components/TodosLoading/TodosLoading";
 import { EmptyTodos } from "../../components/EmpetyTodos/EmptyTodos";
-import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
-// import { Menu } from "../components/Menu/Menu.jsx";
+// import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 import "./home.css";
 
 const Home = () => {
@@ -21,6 +20,7 @@ const Home = () => {
     loading,
     getTask,
     task,
+    filterTask,
     completeTask,
     deleteTask,
     openModal,
@@ -28,7 +28,7 @@ const Home = () => {
   } = useContext(TodoContext);
 
   useEffect(() => {
-    getTask();
+    getTask("true");
   }, []);
   return (
     <main className="main-container">
@@ -40,7 +40,7 @@ const Home = () => {
           new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
         {!error && !loading && !task.length && <EmptyTodos />}
 
-        {task.map((item) => (
+        {filterTask.map((item) => (
           <TodoItem
             key={item._id}
             {...item}

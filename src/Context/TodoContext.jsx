@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useSessionStorage from "../Hooks/useSessionStorage";
 
 const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/task";
@@ -10,6 +10,7 @@ const TodoContext = React.createContext();
 const TodoProvider = (props) => {
   const [auth, saveAuth, deleteAuth] = useSessionStorage();
   const [task, setTask] = useState([]);
+  const [filterTask, setFilterTask] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [authLoading, setAuthLoading] = useState(false);
@@ -17,6 +18,19 @@ const TodoProvider = (props) => {
 
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    getFilterTask();
+  }, [searchValue, task]);
+
+  const getFilterTask = () => {
+    if (searchValue) {
+      const filter = task.filter(({ task }) => {
+        return task.toLowerCase().includes(searchValue.toLowerCase());
+      });
+      setFilterTask(filter);
+    } else setFilterTask(task);
+  };
 
   const login = async ({ email, password }) => {
     try {
@@ -46,7 +60,7 @@ const TodoProvider = (props) => {
     }
   };
   //-------------------
-  const getTask = async () => {
+  const getTask = async (isTrue) => {
     try {
       const res = await fetch(URL, {
         method: "GET",
@@ -247,6 +261,7 @@ const TodoProvider = (props) => {
       value={{
         loading,
         error,
+        getFilterTask,
         completeTask,
         getTask,
         searchValue,
@@ -256,6 +271,7 @@ const TodoProvider = (props) => {
         setOpenModal,
         addTask,
         task,
+        filterTask,
         login,
         authLoading,
         auth,

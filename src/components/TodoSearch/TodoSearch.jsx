@@ -15,7 +15,7 @@ const TodoSearch = () => {
         className="todo-search"
         type="text"
         value={searchValue}
-        placeholder="Filtra el todo"
+        placeholder="filter tasks"
       />
     </>
   );

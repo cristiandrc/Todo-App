@@ -8,9 +8,8 @@ const TodoCounter = () => {
   return (
     <div className="counter-container">
       <p className="todo-counter">
-        Task <span>{task.length}</span>
+        <span>{task.length}</span> Task
       </p>
-      <p>completed {task.filter((e) => e.completed).length}</p>
       <progress
         className="counter-progress"
         max={task.length}
