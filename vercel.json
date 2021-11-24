@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "name": "TodoApp",
+  "builds":[
+    {
+      "use":"@vercel/static-build",
+      "src":"package.json"
+    }
+  ],
+  "routes":[
+    {
+      "src": "(.*).js",
+      "dest": "/$1.js"
+    },
+    { "src": "/[^.]+", "dest": "/", "status": 200 },
+    {
+      "src": "(.*).json",
+      "dest": "/$1.json"
+    },
+    {
+      "src" : "/.*", 
+      "dest": "/index.html"
+    }
+  ]
+}
