@@ -261,7 +261,6 @@ const TodoProvider = (props) => {
       value={{
         loading,
         error,
-        getFilterTask,
         completeTask,
         getTask,
         searchValue,

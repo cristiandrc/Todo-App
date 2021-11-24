@@ -11,7 +11,7 @@
   width: 100%;
   min-width: 317px;
   max-width: 399px;
-  height: calc(100vh - 217px);
+  height: calc(100vh - 185px);
   overflow-y: auto;
   position: relative;
   bottom: 0;

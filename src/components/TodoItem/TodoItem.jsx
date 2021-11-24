@@ -11,7 +11,7 @@ const TodoItem = ({ task, completed, onComplete, onDelete }) => {
         }`}
         onClick={onComplete}
       >
-        <MdCheck />
+        {completed && <MdCheck />}
       </span>
       <p className={`todoItem-p ${completed && "todoItem-p__completed"} `}>
         {task}
