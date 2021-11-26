@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { TodoContext } from "../../Context/TodoContext";
 import Loading from "../../components/Loading/Loading";
+import Logo from "../../components/Logo/Logo";
 import Form from "../../components/Form/Form";
 import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 import "./styles.css";
@@ -15,6 +16,7 @@ const Login = () => {
 
   return (
     <section className="login-container">
+      <Logo />
       <h2 className="login-title">Login</h2>
       {error && <p>Usuario o password incorrecta</p>}
       {authLoading && <Loading />}

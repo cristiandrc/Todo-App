@@ -5,6 +5,7 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/Loading/Loading";
 import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 import "./signUp.css";
+import Logo from "../../components/Logo/Logo";
 
 const SignUp = () => {
   const { error, authLoading, createAccount } = useContext(TodoContext);
@@ -17,6 +18,7 @@ const SignUp = () => {
 
   return (
     <section className="singUp-container">
+      <Logo />
       <h2 className="singUp-title">Sign Up</h2>
       {error && <span>error</span>}
       {authLoading && <Loading />}

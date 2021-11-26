@@ -4,11 +4,14 @@ import Form from "../../components/Form/Form";
 import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 import "./changePassword.css";
 import Loading from "../../components/Loading/Loading";
+import Logo from "../../components/Logo/Logo";
+
 const ChangePassword = () => {
   const { error, authLoading, changePassword } = useContext(TodoContext);
   return (
     <section className="changePassword-container">
-      <h2>Change password</h2>
+      <Logo />
+      <h2 className="changePassword-title">Change password</h2>
       {error && <p>Error</p>}
       {authLoading && <Loading />}
       <Form isChangePassword submit={changePassword} />

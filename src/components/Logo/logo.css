@@ -1,0 +1,20 @@
+.logo-container {
+  display: flex;
+  width: 190px;
+  height: 40px;
+  border-radius: 20px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 10px 15px;
+  background-color: var(--color-two);
+  box-shadow: 0 0 20px 8px rgb(11 11 11 / 33%);
+}
+
+.logo-check-container {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-one);
+}

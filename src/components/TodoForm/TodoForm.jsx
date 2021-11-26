@@ -6,7 +6,7 @@ import useField from "../../Hooks/useField";
 const TodoForm = () => {
   const newTask = useField({ type: "text" });
   const { addTask, setOpenModal } = useContext(TodoContext);
-  const [placeholder, setPlaceholder] = useState("Comprar el mercado");
+  const [placeholder, setPlaceholder] = useState("Buy clothes");
 
   const onCancel = () => {
     setOpenModal((state) => !state);
@@ -18,12 +18,12 @@ const TodoForm = () => {
       addTask(newTask.value);
       onCancel();
     } else {
-      setPlaceholder("Porfa ingresa una tarea para poder Añadir :)");
+      setPlaceholder("please write a task to be able to add it :)");
     }
   };
   return (
     <form className="TodoForm" onSubmit={onSubmit}>
-      <label htmlFor="">Escribe tu nuevo TODO</label>
+      <label htmlFor="">Write your new task</label>
       <textarea {...newTask} placeholder={placeholder} />
       <div>
         <button
@@ -31,10 +31,10 @@ const TodoForm = () => {
           type="button"
           onClick={onCancel}
         >
-          Cancelar
+          Cancel
         </button>
         <button className="TodoForm_Button TodoForm_Button--add" type="submit">
-          Añadir
+          Add
         </button>
       </div>
     </form>
