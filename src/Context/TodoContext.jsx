@@ -60,7 +60,7 @@ const TodoProvider = (props) => {
     }
   };
   //-------------------
-  const getTask = async (isTrue) => {
+  const getTask = async () => {
     try {
       const res = await fetch(URL, {
         method: "GET",
@@ -80,7 +80,6 @@ const TodoProvider = (props) => {
   };
   const completeTask = async (id, completed) => {
     try {
-      // setLoading(true);
       const res = await fetch(URL, {
         method: "PATCH",
         headers: {
@@ -94,9 +93,8 @@ const TodoProvider = (props) => {
         }),
       });
       const result = await res.json();
-      getTask();
-      console.log(result);
-      setLoading(false);
+      await getTask();
+      return result;
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -117,7 +115,7 @@ const TodoProvider = (props) => {
       });
       const result = await res.json();
 
-      getTask();
+      await getTask();
       return result;
     } catch (error) {
       setError(true);
