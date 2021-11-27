@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import BackgroundFigure from "../components/BackgroundFigure/BackgroundFigure";
 import BurgerButton from "../components/BurgerButton/BurgerButton";
 import NavMenu from "../components/NavMenu/NavMenu";
 

@@ -9,8 +9,10 @@ const TodoContext = React.createContext();
 
 const TodoProvider = (props) => {
   const [auth, saveAuth, deleteAuth] = useSessionStorage();
+
   const [task, setTask] = useState([]);
   const [filterTask, setFilterTask] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [authLoading, setAuthLoading] = useState(false);
@@ -21,15 +23,32 @@ const TodoProvider = (props) => {
 
   useEffect(() => {
     getFilterTask();
-  }, [searchValue, task]);
+  }, [searchValue, task, filterStatus]);
 
   const getFilterTask = () => {
+    let filter;
+
+    switch (filterStatus) {
+      case "Active":
+        filter = task.filter((task) => !task.completed);
+        break;
+
+      case "Completed":
+        filter = task.filter((task) => task.completed);
+        break;
+
+      default:
+        filter = [...task];
+        break;
+    }
+
     if (searchValue) {
-      const filter = task.filter(({ task }) => {
+      filter = filter.filter(({ task }) => {
         return task.toLowerCase().includes(searchValue.toLowerCase());
       });
+
       setFilterTask(filter);
-    } else setFilterTask(task);
+    } else setFilterTask(filter);
   };
 
   const login = async ({ email, password }) => {
@@ -259,6 +278,7 @@ const TodoProvider = (props) => {
       value={{
         loading,
         error,
+        setFilterStatus,
         completeTask,
         getTask,
         searchValue,

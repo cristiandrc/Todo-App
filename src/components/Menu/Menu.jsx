@@ -1,14 +1,29 @@
 import React, { useRef, useEffect } from "react";
-import "../styles/Menu.css";
-const Menu = ({ getFilter }) => {
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
+import "./menu.css";
+
+const Menu = ({ setFilter }) => {
+  const [status, saveStatus] = useLocalStorage("statusFilter", "Active");
   const All = useRef();
   const Active = useRef();
   const Completed = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      Active.current.click();
-    }, 2002);
+    setFilter(status);
+    switch (status) {
+      case "All":
+        All.current.setAttribute("active", "page");
+        break;
+      case "Active":
+        Active.current.setAttribute("active", "page");
+        break;
+
+      case "Completed":
+        Completed.current.setAttribute("active", "page");
+        break;
+      default:
+        break;
+    }
   }, []);
 
   const handleClick = (e) => {
@@ -16,20 +31,21 @@ const Menu = ({ getFilter }) => {
     Active.current.removeAttribute("active");
     Completed.current.removeAttribute("active");
     e.target.setAttribute("active", "page");
-    getFilter(e.target.getAttribute("filter"));
+    setFilter(e.target.getAttribute("filter"));
+    saveStatus(e.target.getAttribute("filter"));
   };
 
   return (
     <nav className="menu-nav">
       <ul className="menu-ul">
         <li ref={All} filter="All" onClick={handleClick}>
-          Todos
+          All
         </li>
         <li ref={Active} filter="Active" onClick={handleClick}>
-          Activos
+          Active
         </li>
         <li ref={Completed} filter="Completed" onClick={handleClick}>
-          Completos
+          Completed
         </li>
       </ul>
     </nav>

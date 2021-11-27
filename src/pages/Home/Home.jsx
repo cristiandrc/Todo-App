@@ -11,6 +11,7 @@ import { TodoForm } from "../../components/TodoForm/TodoForm";
 import { TodosError } from "../../components/TodoError/TodosError";
 import { TodosLoading } from "../../components/TodosLoading/TodosLoading";
 import { EmptyTodos } from "../../components/EmpetyTodos/EmptyTodos";
+import { Menu } from "../../components/Menu/Menu";
 // import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 import "./home.css";
 
@@ -25,6 +26,7 @@ const Home = () => {
     deleteTask,
     openModal,
     setOpenModal,
+    setFilterStatus,
   } = useContext(TodoContext);
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const Home = () => {
   return (
     <main className="main-container">
       <TodoCounter />
+      <Menu setFilter={setFilterStatus} />
       <TodoSearch />
       <TodoList>
         {error && <TodosError />}

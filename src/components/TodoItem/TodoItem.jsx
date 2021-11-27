@@ -11,10 +11,9 @@ const TodoItem = ({ task, completed, onComplete, onDelete }) => {
     isCompleted && setLoading(false);
   };
 
-  const deleted = async () => {
+  const deleted = () => {
     setLoading(true);
-    const isCompleted = await onDelete();
-    isCompleted && setLoading(false);
+    onDelete();
   };
   return (
     <li className={`todoItem-container `}>
@@ -30,9 +29,11 @@ const TodoItem = ({ task, completed, onComplete, onDelete }) => {
       <p className={`todoItem-p ${completed && "todoItem-p__completed"} `}>
         {task}
       </p>
-      <span className=" icon todoItem-delete" onClick={deleted}>
-        <MdDelete />
-      </span>
+      {completed && (
+        <span className=" icon todoItem-delete" onClick={deleted}>
+          <MdDelete />
+        </span>
+      )}
     </li>
   );
 };
