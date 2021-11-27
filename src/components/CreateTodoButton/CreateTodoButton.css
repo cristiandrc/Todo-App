@@ -18,3 +18,9 @@
 .todoButton.open {
   transform: rotate(224deg);
 }
+
+@media (min-width: 1000px) {
+  .todoButton {
+    position: absolute;
+  }
+}

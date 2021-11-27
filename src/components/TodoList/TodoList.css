@@ -37,3 +37,9 @@
   background: #e1e1e1;
   border-radius: 4px;
 }
+
+@media (min-height: 900px) {
+  .Todo-list_ul {
+    height: calc(900px - 185px);
+  }
+}

@@ -1,3 +1,4 @@
 .main-container {
   position: relative;
+  height: calc(100% - 35px);
 }

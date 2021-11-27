@@ -18,3 +18,11 @@
   background-color: rgb(35, 82, 211);
   border-radius: 20px;
 }
+
+@media (min-width: 1000px) {
+  @media (min-height: 900px) {
+    .singUp-container {
+      min-height: 90%;
+    }
+  }
+}

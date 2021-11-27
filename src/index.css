@@ -17,15 +17,39 @@ a {
 }
 
 body {
-  background: var(--color-one);
   color: var(--color-letter);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background-color: #333;
+  min-height: 100vh;
+  position: relative;
+  z-index: -3;
 }
 
 #root {
-  /* margin: 0 24px; */
-  /* padding-top: 20px; */
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  z-index: -2;
+  background: var(--color-one);
+}
+
+@media (min-width: 1000px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #root {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 10px;
+  }
+
+  @media (min-height: 900px) {
+    #root {
+      min-height: initial;
+      height: 900px;
+    }
+  }
 }

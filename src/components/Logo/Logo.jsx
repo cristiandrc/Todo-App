@@ -6,7 +6,7 @@ const Logo = () => {
       <div className="logo-check-container">
         <MdCheck size="30" />
       </div>
-      <h2>TODO-APP</h2>
+      <h2>ToDo APP</h2>
     </div>
   );
 };
