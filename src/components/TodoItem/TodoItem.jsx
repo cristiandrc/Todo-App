@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { MdDelete, MdCheck } from "react-icons/md";
 import "./TodoItem.css";
-
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
 const TodoItem = ({ task, completed, onComplete, onDelete }) => {
+  const [status] = useLocalStorage("statusFilter", "Active");
+
   const [loading, setLoading] = useState(false);
 
   const competed = async () => {
     setLoading(true);
     const isCompleted = await onComplete();
-    isCompleted && setLoading(false);
+    isCompleted && status === "All" && setLoading(false);
   };
 
   const deleted = () => {
