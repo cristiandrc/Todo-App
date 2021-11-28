@@ -20,8 +20,15 @@
   color: #fafafa;
   cursor: pointer;
   border: none;
+  transition: border 0.5s ease;
 }
 
-li[active] {
+.menu-ul li[active] {
   border-bottom: solid #61dafa 1px;
+}
+
+@media (min-width: 1000px) {
+  .menu-ul li:hover {
+    border-bottom: solid #eb05ff 1px;
+  }
 }

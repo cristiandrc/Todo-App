@@ -88,9 +88,23 @@
   cursor: pointer;
 }
 
+.menu-by {
+  position: absolute;
+  font-size: 18px;
+  bottom: 10px;
+}
+.menu-by a {
+  border-bottom: 1px solid #333;
+  transition: all 0.5s ease;
+}
+
 @media (min-width: 1000px) {
   .menu-container {
     height: 100%;
     width: 50%;
+  }
+
+  .menu-by a:hover {
+    color: ;
   }
 }

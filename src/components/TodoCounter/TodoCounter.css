@@ -7,13 +7,18 @@
   padding: 0 15px;
   background-color: var(--color-two);
   margin: 0 auto 20px;
-  border-radius: 30px;
+  border-radius: 10px;
   box-shadow: 0px 0px 20px 3px #031956d4;
   text-align: center;
 }
 
 .todo-counter {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.todo-counter span {
   font-weight: 700;
 }
 

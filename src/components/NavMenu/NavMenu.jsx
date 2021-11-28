@@ -27,6 +27,13 @@ const NavMenu = ({ click, isOpen }) => {
           </li>
         </ul>
       </nav>
+
+      <p className="menu-by">
+        By{" "}
+        <a target="_blank" href="https://cristiandrc.dev/">
+          cristiandrc.dev
+        </a>
+      </p>
       <BackgroundFigure two />
     </div>
   );

@@ -40,6 +40,6 @@
 
 @media (min-height: 900px) {
   .Todo-list_ul {
-    height: calc(900px - 185px);
+    height: calc(900px - 216px);
   }
 }
