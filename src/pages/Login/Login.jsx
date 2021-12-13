@@ -5,10 +5,11 @@ import Loading from "../../components/Loading/Loading";
 import Logo from "../../components/Logo/Logo";
 import Form from "../../components/Form/Form";
 import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
+import Message from "../../components/Message/Message";
 import "./styles.css";
 
 const Login = () => {
-  const { error, authLoading, login } = useContext(TodoContext);
+  const { error, setError, authLoading, login } = useContext(TodoContext);
 
   const onSubmit = async (e) => {
     login({ email: e.email, password: e.password });
@@ -18,7 +19,15 @@ const Login = () => {
     <section className="login-container">
       <Logo />
       <h2 className="login-title">Login</h2>
-      {error && <p>Usuario o password incorrecta</p>}
+      {error && (
+        <Message
+          error
+          title="Error"
+          message="The user or password is incorrect"
+          btnMessage="Try again"
+          onClick={() => setError(false)}
+        />
+      )}
       {authLoading && <Loading />}
       <Form submit={onSubmit} value="Login" />
       <Link to="/reset-password">forgot password?</Link>

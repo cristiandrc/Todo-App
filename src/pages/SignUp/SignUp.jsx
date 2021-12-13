@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TodoContext } from "../../Context/TodoContext";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/Loading/Loading";
@@ -37,7 +36,7 @@ const SignUp = () => {
       {authLoading && <Loading />}
       {successful && (
         <Message
-          title="Successful"
+          title="Great"
           message="Account Created successfully"
           btnMessage="Go to Login"
           onClick={() => navigate("/login")}
