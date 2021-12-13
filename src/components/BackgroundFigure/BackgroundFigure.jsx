@@ -1,3 +1,4 @@
+import React from "react";
 import "./backgroundFigure.css";
 const BackgroundFigure = ({ two }) => {
   return (

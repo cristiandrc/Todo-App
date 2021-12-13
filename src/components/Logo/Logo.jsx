@@ -1,3 +1,4 @@
+import React from "react";
 import { MdCheck } from "react-icons/md";
 import "./logo.css";
 const Logo = () => {

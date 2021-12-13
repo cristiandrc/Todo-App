@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BackgroundFigure from "../../components/BackgroundFigure/BackgroundFigure";
 import Form from "../../components/Form/Form";
