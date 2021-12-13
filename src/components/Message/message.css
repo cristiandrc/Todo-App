@@ -1,0 +1,27 @@
+.message-container {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  padding: 30px 0;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(73, 158, 118);
+  border-radius: 5px;
+}
+
+.message-container.error {
+  background-color: rgb(112, 45, 45);
+}
+
+.message-button {
+  width: 90px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.274);
+  border: 1px solid black;
+}
