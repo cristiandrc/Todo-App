@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useSessionStorage from "../Hooks/useSessionStorage";
 
-const URL_BASE = "https://back-end-todo-app.vercel.app/";
+const URL_BASE = "https://back-end-todo-app.vercel.app";
 const URL = `${URL_BASE}/api/v1/task`;
 const URL_USER = `${URL_BASE}/api/v1/user`;
 const URL_auth = `${URL_BASE}/api/v1/auth`;
