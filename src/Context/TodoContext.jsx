@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import useSessionStorage from "../Hooks/useSessionStorage";
 
-const URL = "https://vast-badlands-07993.herokuapp.com/api/v1/task";
-const URL_USER = "https://vast-badlands-07993.herokuapp.com/api/v1/user";
-const URL_auth = "https://vast-badlands-07993.herokuapp.com/api/v1/auth";
+const URL_BASE = "https://back-end-todo-app.vercel.app";
+const URL = `${URL_BASE}/api/v1/task`;
+const URL_USER = `${URL_BASE}/api/v1/user`;
+const URL_auth = `${URL_BASE}/api/v1/auth`;
 
 const TodoContext = React.createContext();
 
